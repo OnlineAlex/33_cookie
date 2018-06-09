@@ -11,25 +11,26 @@
     </div>
   </div>
   <script type="text/javascript">
-    this.cars = []
+    this.cars = [];
+    var riotTag = this;
 
-    var riotTag = this
-
-    function fetchCars(){
-      fetch(window.getAPIUrl('/cars')).then(function(response) {
-        if (response.status==200){
+    function fetchCars() {
+      fetch(window.getAPIUrl('cars/'), {
+        credentials: 'include'
+      }).then(function (response) {
+        if (response.status == 200) {
           return response.json()
-        } else if (response.status==403){
-          window.go2page('/signup')
-        } else if (response.status==500){
+        } else if (response.status == 403) {
+          window.go2page('#/signup')
+        } else if (response.status == 500) {
           alert('Упс, что-то пошло не так. Ошибка на сервере')
         }
-      }).catch(function(error) {
-        alert('Упс, что-то пошло не так')
+      }).catch(function (error) {
+        alert('Упс, что-то пошло не так');
         console.error(error)
-      }).then(function(jsonData){
-        if (jsonData){
-          riotTag.cars = jsonData.cars
+      }).then(function (jsonData) {
+        if (jsonData) {
+          riotTag.cars = jsonData.cars;
           riotTag.update()
         }
       })

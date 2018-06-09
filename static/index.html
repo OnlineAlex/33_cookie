@@ -5,7 +5,7 @@
   <meta content="utf-8" http-equiv="encoding">
 
   <title>ПомойАвто</title>
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -17,7 +17,6 @@
       padding-top: 20px;
       padding-bottom: 20px;
     }
-
     /* Everything but the jumbotron gets side spacing for mobile first views */
     .header,
     .marketing,
@@ -25,7 +24,6 @@
       padding-right: 15px;
       padding-left: 15px;
     }
-
     /* Custom page header */
     .header {
       padding-bottom: 20px;
@@ -37,14 +35,12 @@
       margin-bottom: 0;
       line-height: 40px;
     }
-
     /* Custom page footer */
     .footer {
       padding-top: 19px;
       color: #777;
       border-top: 1px solid #e5e5e5;
     }
-
     /* Customize container */
     @media (min-width: 768px) {
       .container {
@@ -54,7 +50,6 @@
     .container-narrow > hr {
       margin: 30px 0;
     }
-
     /* Main marketing message and sign up button */
     .jumbotron {
       text-align: center;
@@ -64,7 +59,6 @@
       padding: 14px 24px;
       font-size: 21px;
     }
-
     /* Supporting marketing content */
     .marketing {
       margin: 40px 0;
@@ -72,7 +66,6 @@
     .marketing p + h4 {
       margin-top: 28px;
     }
-
     /* Responsive: Portrait tablets and up */
     @media screen and (min-width: 768px) {
       /* Remove the padding we set earlier */
@@ -114,8 +107,6 @@
     .top50 {
       margin-top: 50px;
     }
-
-
   </style>
 </head>
 <body>
@@ -141,17 +132,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   <!-- custom riot tags -->
-  <script type="riot/tag" src="/pages/signup-page.tag.html"></script>
-  <script type="riot/tag" src="/pages/cars-page.tag.html"></script>
+  <script type="riot/tag" src="pages/signup-page.tag.html"></script>
+  <script type="riot/tag" src="pages/cars-page.tag.html"></script>
 
-  <script src="/vendor/navigo.js"></script><!-- router -->
-  <script src="/vendor/fetch.js"></script><!-- uses isomorfic fetch for IE support -->
+  <script src="vendor/navigo.js"></script><!-- router -->
+  <script src="vendor/fetch.js"></script><!-- uses isomorfic fetch for IE support -->
 
   <script type="text/javascript">
     window.getAPIUrl = function(endpoint){
       if (endpoint.startsWith('/'))
         endpoint = endpoint.substring(1)
-
       // return 'http://localhost:8080/' + endpoint // Uncomment to enable local API gateway
       return 'http://api.33_cookie.devman.org/' + endpoint
     }
@@ -160,27 +150,22 @@
   <script>
   function main(){
     var mountPoint = document.getElementById('page-container')
-
     // initialize JS router
     var root = null
     var useHash = true
     var router = new Navigo(root, useHash)
-
     window.go2page = function(url){
       router.navigate(url);
     }
-
     router.on({
       // docs live here https://github.com/krasimir/navigo
       '/signup': function(){
         riot.mount(mountPoint, 'signup-page', {})
       },
-
       '/': function(){
         riot.mount(mountPoint, 'cars-page', {})
       },
     }).resolve();
-
   }
   main()
   </script>
